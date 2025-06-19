@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +10,28 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
+
+  late AnimationController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+    vsync: this, 
+    upperBound: 100,
+    duration:Duration(seconds: 1), 
+    );
+    controller.forward();
+    controller.addListener((){
+      setState(() {
+        
+      });
+      log(controller.value.toString());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: (){
@@ -26,9 +45,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  SizedBox(
-                    height: 60.0,
-                    child: Image.asset('assets/images/logo.png'),
+                  Hero(
+                    tag:  'logo',
+                    child: SizedBox(
+                      height: controller.value,
+                      child: Image.asset('assets/images/logo.png'),
+                    ),
                   ),
                   Text(
                     'Flash Chat',
