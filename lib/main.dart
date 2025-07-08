@@ -1,10 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/welcome_screen.dart';
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
 
-void main() => runApp(FlashChat());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final options = const FirebaseOptions(
+    apiKey: 'AIzaSyDGW1Oy8UsC8JZqLGR5UzO0vosR6nLCb7g',
+    appId: 'com.chima.flash_chat',
+    messagingSenderId: 'your-messaging-sender-id',
+    projectId: 'flash-chat-3996f',
+  );
+
+  await Firebase.initializeApp(options: options);
+
+runApp(FlashChat()); }
+
+
+
 
 class FlashChat extends StatelessWidget {
   @override
