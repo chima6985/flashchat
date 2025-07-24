@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
-    id("com.google.gms.google-services")
+    // id("com.google.gms.google-services")
 
 }
 
@@ -45,7 +45,9 @@ flutter {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    // implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
+    // implementation("com.google.firebase:firebase-analytics")
+    // implementation("com.google.firebase:firebase-auth:19.0.0")
     
 }
+// apply plugin: "com.google.gms.google-services"

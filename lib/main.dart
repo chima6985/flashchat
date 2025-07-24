@@ -1,25 +1,41 @@
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/welcome_screen.dart';
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
 
-void main()  async{
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  FlutterError.onError = (details) {
+  log('Flutter error: ${details.exceptionAsString()}');
+};
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  final options = const FirebaseOptions(
-    apiKey: 'AIzaSyDGW1Oy8UsC8JZqLGR5UzO0vosR6nLCb7g',
-    appId: 'com.chima.flash_chat',
-    messagingSenderId: 'your-messaging-sender-id',
-    projectId: 'flash-chat-3996f',
-  );
+  // final options = const FirebaseOptions(
+  //   apiKey: 'AIzaSyDGW1Oy8UsC8JZqLGR5UzO0vosR6nLCb7g',
+  //   appId: 'com.chima.flash_chat',
+  //   messagingSenderId: 'your-messaging-sender-id',
+  //   projectId: 'flash-chat-3996f',
+  // );
 
-  await Firebase.initializeApp(options: options);
+  // await Firebase.initializeApp();
+  try {
+    runApp(FlashChat());
+  } catch (e) {
+    log("the error is: $e");
+  }
+}
 
-runApp(FlashChat()); }
+class ExmapleApp extends StatelessWidget {
+  const ExmapleApp({super.key});
 
-
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
 
 
 class FlashChat extends StatelessWidget {
